@@ -31,6 +31,11 @@
 #define HAL_USE_STM32_ONEWIRE                FALSE
 #endif
 
+#if !defined(HAL_USE_STM32_USB_MSD)
+// the default for this driver is NOT to be included
+#define HAL_USE_STM32_USB_MSD                FALSE
+#endif
+
 // Abstract interfaces
 
 // Shared headers
@@ -42,6 +47,7 @@
 #include "hal_stm32_rng.h"
 #include "hal_stm32_fsmc.h"
 #include "hal_stm32_onewire.h"
+#include "hal_stm32_usb_msd.h"
 
 // Complex drivers
 // #include "hal_nnnn.h"

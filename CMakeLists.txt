@@ -383,6 +383,24 @@ else()
 endif()
 
 #################################################################
+# enables USB MSD in nanoCLR
+# (default is OFF so USB MSD is NOT supported)
+option(NF_FEATURE_HAS_USB_MSD "option to use filesystem")
+
+if(NF_FEATURE_HAS_USB_MSD)
+    # set(USE_FILESYSTEM_OPTION TRUE CACHE INTERNAL "NF feature FILESYSTEM")
+    set(HAL_USE_STM32_USB_MSD_OPTION TRUE CACHE INTERNAL "HAL USB_MSD for NF_FEATURE_HAS_USB_MSD")
+    # message(STATUS "Support for filesystem enabled")
+    message(STATUS "Support for USB MSD enabled")
+else()
+    # set(USE_FILESYSTEM_OPTION FALSE CACHE INTERNAL "NF feature FILESYSTEM")
+    set(HAL_USE_STM32_USB_MSD_OPTION FALSE CACHE INTERNAL "HAL USB_MSD for NF_FEATURE_HAS_USB_MSD")
+endif()
+
+# TODO 
+# need to group USE_FILESYSTEM_OPTION depending on both HAL_USE_SDC_OPTION and HAL_USE_STM32_USB_MSD
+
+#################################################################
 
 
 #################################################################

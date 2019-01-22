@@ -527,7 +527,7 @@
  * @note    Disabling this option saves both code and data space.
  */
 #if !defined(USB_USE_WAIT) || defined(__DOXYGEN__)
-#define USB_USE_WAIT                        FALSE
+#define USB_USE_WAIT                        TRUE
 #endif
 
 // header for nanoFramework overlay

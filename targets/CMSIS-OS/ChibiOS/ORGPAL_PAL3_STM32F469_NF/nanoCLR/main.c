@@ -16,10 +16,22 @@
 #include <nanoHAL_v2.h>
 #include <targetPAL.h>
 
+// #include "ramdisk.h"
+// #include "romfs_img.h"
+// #include "ramdisk.h"
+
 // need to declare the Receiver thread here
 osThreadDef(ReceiverThread, osPriorityHigh, 2048, "ReceiverThread");
 // declare CLRStartup thread here 
 osThreadDef(CLRStartupThread, osPriorityNormal, 4096, "CLRStartupThread"); 
+
+// #define RAMDISK_BLOCK_SIZE    512U
+// #define RAMDISK_BLOCK_CNT     700U
+
+// RamDisk ramdisk;
+// __attribute__((section("DATA_RAM"))) static uint8_t ramdisk_storage[RAMDISK_BLOCK_SIZE * RAMDISK_BLOCK_CNT];
+// static uint8_t blkbuf[RAMDISK_BLOCK_SIZE];
+
 
 //  Application entry point.
 int main(void) {
@@ -99,16 +111,48 @@ int main(void) {
   // create the receiver thread
   osThreadCreate(osThread(ReceiverThread), NULL);
 
-  // CLR settings to launch CLR thread
-  CLR_SETTINGS clrSettings;
-  (void)memset(&clrSettings, 0, sizeof(CLR_SETTINGS));
+  // // CLR settings to launch CLR thread
+  // CLR_SETTINGS clrSettings;
+  // (void)memset(&clrSettings, 0, sizeof(CLR_SETTINGS));
 
-  clrSettings.MaxContextSwitches         = 50;
-  clrSettings.WaitForDebugger            = false;
-  clrSettings.EnterDebuggerLoopAfterExit = true;
+  // clrSettings.MaxContextSwitches         = 50;
+  // clrSettings.WaitForDebugger            = false;
+  // clrSettings.EnterDebuggerLoopAfterExit = true;
 
-  // create the CLR Startup thread 
-  osThreadCreate(osThread(CLRStartupThread), &clrSettings);
+  // // create the CLR Startup thread 
+  // osThreadCreate(osThread(CLRStartupThread), &clrSettings);
+
+
+  /*
+   * Activates the USB driver and then the USB bus pull-up on D+.
+   * Note, a delay is inserted in order to not have to disconnect the cable
+   * after a reset.
+   */
+  usbDisconnectBus(&USBD1);
+  chThdSleepMilliseconds(1500);
+  usbStart(&USBD1, &usbcfg);
+  
+  
+  // /*
+  //  * start RAM disk
+  //  */
+  // ramdiskObjectInit(&ramdisk);
+  // memset(ramdisk_storage, 0x55, sizeof(ramdisk_storage));
+  // osalDbgCheck(sizeof(ramdisk_storage) >= romfs_bin_len);
+  // memcpy(ramdisk_storage, romfs_bin, romfs_bin_len);
+  // ramdiskStart(&ramdisk, ramdisk_storage, RAMDISK_BLOCK_SIZE,
+  //              RAMDISK_BLOCK_CNT, false);
+
+  /*
+   * start mass storage
+   */
+  msdObjectInit(&USBMSD1);
+  //msdStart(&USBMSD1, &USBD2, (BaseBlockDevice *)&ramdisk, blkbuf, NULL, NULL);
+
+  /*
+   *
+   */
+  usbConnectBus(&USBD1);
 
   // start kernel, after this main() will behave like a thread with priority osPriorityNormal
   osKernelStart();

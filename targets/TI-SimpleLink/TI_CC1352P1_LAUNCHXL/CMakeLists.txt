@@ -58,7 +58,7 @@ add_executable(
 
     ${TARGET_TI_SimpleLink_NANOCLR_SOURCES}
 
-    ${TI_SimpleLink_SOURCES}
+    ${TARGET_TI_SimpleLink_SOURCES}
 
     ${WireProtocol_SOURCES}
 
@@ -148,6 +148,9 @@ nf_set_compiler_options(${NANOCLR_PROJECT_NAME}.elf)
 
 # set compiler definitions
 nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DDeviceFamily_CC13X2 )
+
+# set compiler definitions pertaining PHY types availability
+nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DSUPPORT_PHY_CUSTOM -DSUPPORT_PHY_50KBPS2GFSK -DSUPPORT_PHY_5KBPSSLLR -DSUPPORT_PHY_200KBPS2GFSK )
 
 # set linker files
 if(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)

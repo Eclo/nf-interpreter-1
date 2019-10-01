@@ -96,8 +96,8 @@ EasyLink_RfSetting EasyLink_supportedPhys[] = {
 #endif //defined(SUPPORT_PHY_5KBPSSLLR)
 #if defined(SUPPORT_PHY_625BPSLRM)
     {.EasyLink_phyType = EasyLink_Phy_625bpsLrm,
-     .RF_pProp = &RF_prop_lrm,
-     .RF_uCmdPropRadio.RF_pCmdPropRadioDivSetup = &RF_cmdPropRadioDivSetup_lrm,
+     .RF_pProp = &RF_prop_sl_lr,
+     .RF_uCmdPropRadio.RF_pCmdPropRadioDivSetup = &RF_cmdPropRadioDivSetup_sl_lr,
      .RF_pCmdFs = &RF_cmdFs_preDef,
      .RF_pCmdPropTx = &RF_cmdPropTx,
      .RF_pCmdPropTxAdv = NULL,

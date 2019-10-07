@@ -149,9 +149,6 @@ nf_set_compiler_options(${NANOCLR_PROJECT_NAME}.elf)
 # set compiler definitions
 nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DDeviceFamily_CC13X2 )
 
-# set compiler definitions pertaining RF configs
-nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DSET_CCFG_MODE_CONF_XOSC_CAP_MOD=0x0 -DSET_CCFG_MODE_CONF_XOSC_CAPARRAY_DELTA=-63 -DCCFG_FORCE_VDDR_HH=0 )
-
 # set compiler definitions pertaining PHY types availability
 nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DSUPPORT_PHY_CUSTOM -DSUPPORT_PHY_625BPSLRM -DSUPPORT_PHY_50KBPS2GFSK -DSUPPORT_PHY_5KBPSSLLR -DSUPPORT_PHY_200KBPS2GFSK )
 

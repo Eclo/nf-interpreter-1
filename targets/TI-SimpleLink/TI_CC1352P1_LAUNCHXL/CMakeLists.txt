@@ -152,6 +152,9 @@ nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DDeviceFamily_CC13X2 )
 # set compiler definitions pertaining PHY types availability
 nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DSUPPORT_PHY_CUSTOM -DSUPPORT_PHY_50KBPS2GFSK -DSUPPORT_PHY_5KBPSSLLR -DSUPPORT_PHY_200KBPS2GFSK )
 
+# set compiler definitions pertaining PA availability
+nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DCCFG_FORCE_VDDR_HH=0x1 )
+
 # set linker files
 if(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)
     nf_set_linker_file(${NANOCLR_PROJECT_NAME}.elf ${CMAKE_CURRENT_SOURCE_DIR}/nanoCLR/CC13x2_26x2_CLR-DEBUG.ld)

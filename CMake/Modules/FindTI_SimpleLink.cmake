@@ -27,6 +27,10 @@ include(TI_SimpleLink_${TARGET_SERIES}_sources)
 # and here the GCC options tuned for the target series 
 include(TI_SimpleLink_${TARGET_SERIES}_GCC_options)
 
+# includes for FreeRTOS
+list(APPEND TI_SimpleLink_INCLUDE_DIRS "${PROJECT_BINARY_DIR}/FreeRTOS_Source/FreeRTOS/Source/include")
+list(APPEND TI_SimpleLink_INCLUDE_DIRS "${PROJECT_BINARY_DIR}/FreeRTOS_Source/FreeRTOS/Source/include/private")
+list(APPEND TI_SimpleLink_INCLUDE_DIRS "${PROJECT_BINARY_DIR}/FreeRTOS_Source/FreeRTOS/Source/portable/GCC/ARM_CM3")
 list(APPEND TI_SimpleLink_INCLUDE_DIRS "${TARGET_BASE_LOCATION}")
 
 if(TARGET_SERIES STREQUAL "CC32xx")
@@ -40,38 +44,15 @@ if(TARGET_SERIES STREQUAL "CC32xx")
     set(FreeRTOS_SRCS
 
         # FreeRTOS
-        event_groups.c
-        list.c
-        queue.c
-        stream_buffer.c
-        tasks.c
-        timers.c
-        port.c
-        heap_4.c
-        clock.c
-        memory.c
-        mqueue.c
-        pthread_barrier.c
-        pthread_cond.c
-        pthread.c
-        pthread_mutex.c
-        pthread_rwlock.c
-        sched.c
-        semaphore.c
-        sleep.c
-        timer.c
-        PTLS.c
-        aeabi_portable.c
+        "${PROJECT_BINARY_DIR}/SimpleLinkCC32xxSDK_Source/ti/posix/freertos"
+        "${PROJECT_BINARY_DIR}/SimpleLinkCC32xxSDK_Source/ti/source"
+        "${PROJECT_BINARY_DIR}/SimpleLinkCC32xxSDK_Source/kernel/freertos/dpl"
+        "${PROJECT_BINARY_DIR}/SimpleLinkCC32xxSDK_Source/kernel/freertos/startup"
+        "${PROJECT_BINARY_DIR}/FreeRTOS_Source/FreeRTOS/Source/portable/MemMang"
+        "${PROJECT_BINARY_DIR}/FreeRTOS_Source/FreeRTOS/Source/portable/GCC/ARM_CM3"
+        "${PROJECT_BINARY_DIR}/FreeRTOS_Source/FreeRTOS/Source"
 
-        HwiPCC32XX_freertos.c
-        PowerCC32XX_freertos.c
-        startup_cc32xx_gcc.c
-        ClockP_freertos.c
-        DebugP_freertos.c
-        MutexP_freertos.c
-        SemaphoreP_freertos.c
-        SystemP_freertos.c 
-
+        CMAKE_FIND_ROOT_PATH_BOTH
     )
 
     foreach(SRC_FILE ${FreeRTOS_SRCS})

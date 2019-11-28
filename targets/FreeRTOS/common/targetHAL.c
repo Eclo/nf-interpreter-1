@@ -5,13 +5,12 @@
 
 #include "stdint.h"
 #include "stdbool.h"
-#include "cmsis_gcc.h"
 #include <nanoWeak.h>
 #include <platform_target_capabilities.h>
 
 void HAL_AssertEx()
 {
-    __BKPT(0);
+    __asm volatile("BKPT #0\n");
     while(true) { /*nop*/ }
 }
 
@@ -19,7 +18,7 @@ void HAL_AssertEx()
 
 void HARD_Breakpoint() 
 {
-    __BKPT(0);
+    __asm volatile("BKPT #0\n");
     while(true) { /*nop*/ }
 };
 

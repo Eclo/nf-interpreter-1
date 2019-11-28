@@ -36,6 +36,7 @@ endif()
 
 #######################################
 
+SET(ENV{PATH} "${AZURE_SPHERE_SDK_PATH}/Tools;$ENV{PATH}")
 
 #######################
 # nanoCLR executable
@@ -122,10 +123,23 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME})
-SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES LINK_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/linker.ld)
+# SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES LINK_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/linker.ld)
+
+# set compiler options
+nf_set_compiler_options(${PROJECT_NAME})
 
 # set compiler definitions
 nf_set_compiler_definitions(${PROJECT_NAME})
+
+# set linker files
+if(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)
+    nf_set_linker_file(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/linker.ld)
+else()
+    nf_set_linker_file(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/linker.ld)
+endif()
+
+# set linker options
+nf_set_linker_options(${PROJECT_NAME})
 
 # Add MakeImage post-build command
 INCLUDE("${CMAKE_CURRENT_SOURCE_DIR}/AzureSphereMakeImageNF.cmake")

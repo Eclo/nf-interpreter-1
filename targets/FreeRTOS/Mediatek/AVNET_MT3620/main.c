@@ -123,6 +123,8 @@ static void ISU0Init(void)
 
 static void PeriodicTask(void* pParameters) 
 {
+	(void)pParameters;
+
 	while (1) {
 		vTaskDelay(pdMS_TO_TICKS(blinkIntervalsMs[blinkIntervalIndex]));
 		xSemaphoreGive(LEDSemphr);
@@ -131,6 +133,8 @@ static void PeriodicTask(void* pParameters)
 
 static void LedTask(void* pParameters)
 {
+	(void)pParameters;
+
 	BaseType_t rt;
 
 	while (1) {
@@ -146,6 +150,8 @@ static void LedTask(void* pParameters)
 
 static void ButtonTask(void* pParameters)
 {
+	(void)pParameters;
+
 	static bool prevState = true;
 	bool newState;
 
@@ -167,6 +173,8 @@ static void ButtonTask(void* pParameters)
 
 static void UARTTask(void* pParameters)
 {
+	(void)pParameters;
+
 	char c;
 
 	while (1) {
@@ -177,6 +185,8 @@ static void UARTTask(void* pParameters)
 
 static void TaskInit(void* pParameters) 
 {
+	(void)pParameters;
+
 	LEDSemphr = xSemaphoreCreateBinary();
 
 	xTaskCreate(PeriodicTask, "Periodic Task", APP_STACK_SIZE_BYTES, NULL, 6, NULL);
@@ -229,6 +239,8 @@ static _Noreturn void RTCoreMain(void)
 
 void vApplicationStackOverflowHook(TaskHandle_t xTask, char* pcTaskName)
 {
+	(void)xTask;
+	(void)pcTaskName;
 	;
 }
 

@@ -485,15 +485,19 @@
       "variables": [
         {
           "name": "CMAKE_TOOLCHAIN_FILE",
-          "value": "${env.AzureSphereDefaultSDKDir}CMakeFiles\\AzureSphereRTCoreToolchainVFP.cmake"
+          "value": "${workspaceRoot}/CMake/toolchain.arm-none-eabi.cmake"
+        },
+        {
+          "name": "TOOLCHAIN_PREFIX",
+          "value": "E:/GNU_Tools_ARM_Embedded/9-2019-q4-major"
         },
         {
           "name": "AZURE_SPHERE_TARGET_API_SET",
           "value": "${env.AzureSphereTargetApiSet}"
         },
         {
-          "name": "ARM_GNU_PATH",
-          "value": "${env.DefaultArmToolsetPath}"
+          "name": "AZURE_SPHERE_SDK_PATH",
+          "value": "C:/Program Files (x86)/Microsoft Azure Sphere SDK"
         },
         {
           "name": "RTOS",

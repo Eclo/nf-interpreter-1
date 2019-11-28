@@ -1,0 +1,12 @@
+{
+  "SchemaVersion": 1,
+  "Name": "nanoFramework_CLR",
+  "ComponentId": "d3febec1-0af4-4641-b459-903ab5403c95",
+  "EntryPoint": "/bin/app",
+  "CmdArgs": [],
+  "Capabilities": {
+    "Gpio": [ 0, 8, 12 ],
+    "Uart": [ "ISU0" ]
+  },
+  "ApplicationType": "RealTimeCapable"
+}

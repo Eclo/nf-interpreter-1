@@ -104,11 +104,11 @@ endif()
 #######################
 
 # check for toolchain path (this is required for Windows builds and we are only building on Windows)
-if(NOT DEFINED TOOLCHAIN_PREFIX)
-        message(STATUS "\n-- ########################################\nNo TOOLCHAIN_PREFIX specified, need one!\nCall CMake with -DTOOLCHAIN_PREFIX=\"<path_to_your_gcc_toolchain>\"\n specifing the path to your GCC toolchain (ex: E:/GNU_Tools_ARM_Embedded/5_4_2016q3)")
-        message(STATUS "\nNOTE: mind the forward slash in the path, without trailing slash.)")
-        message(STATUS "########################################\n\n")
-        message(FATAL_ERROR "No TOOLCHAIN_PREFIX specified")
+if(NOT DEFINED TOOLCHAIN_PREFIX AND NOT TARGET_SERIES STREQUAL MT3620)
+    message(STATUS "\n-- ########################################\nNo TOOLCHAIN_PREFIX specified, need one!\nCall CMake with -DTOOLCHAIN_PREFIX=\"<path_to_your_gcc_toolchain>\"\n specifing the path to your GCC toolchain (ex: E:/GNU_Tools_ARM_Embedded/5_4_2016q3)")
+    message(STATUS "\nNOTE: mind the forward slash in the path, without trailing slash.)")
+    message(STATUS "########################################\n\n")
+    message(FATAL_ERROR "No TOOLCHAIN_PREFIX specified")
 endif()
 
 # Set up short path substitution on Windows

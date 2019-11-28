@@ -1,4 +1,11 @@
 ﻿{
+  "environments": [
+    {
+      "environment": "AzureSphere",
+
+      "AzureSphereTargetApiSet": "3+Beta1909"
+    }
+  ],
   "configurations": [
     {
       "name": "ST_STM32F769I_DISCOVERY",
@@ -460,6 +467,45 @@
           "name": "NF_FEATURE_HAS_SDCARD",
           "value": "True",
           "type": "BOOL"
+        }
+      ]
+    },
+    {
+      "name": "AVNET_MT3620-Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "inheritEnvironments": [
+        "AzureSphere"
+      ],
+      "buildRoot": "${workspaceRoot}/build/",
+      "installRoot": "${workspaceRoot}/build/install/${name}-${env.AzureSphereTargetApiSet}",
+      "cmakeCommandArgs": "--no-warn-unused-cli",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "variables": [
+        {
+          "name": "CMAKE_TOOLCHAIN_FILE",
+          "value": "${env.AzureSphereDefaultSDKDir}CMakeFiles\\AzureSphereRTCoreToolchainVFP.cmake"
+        },
+        {
+          "name": "AZURE_SPHERE_TARGET_API_SET",
+          "value": "${env.AzureSphereTargetApiSet}"
+        },
+        {
+          "name": "ARM_GNU_PATH",
+          "value": "${env.DefaultArmToolsetPath}"
+        },
+        {
+          "name": "RTOS",
+          "value": "FREERTOS"
+        },
+        {
+          "name": "FREERTOS_BOARD",
+          "value": "AVNET_MT3620"
+        },
+        {
+          "name": "TARGET_SERIES",
+          "value": "MT3620"
         }
       ]
     }

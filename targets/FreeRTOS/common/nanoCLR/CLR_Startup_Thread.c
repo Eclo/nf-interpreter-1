@@ -3,8 +3,6 @@
 // See LICENSE file in the project root for full license information.
 //
 
-#include "board.h"
-
 #include "FreeRTOS.h"
 #include "task.h"
 

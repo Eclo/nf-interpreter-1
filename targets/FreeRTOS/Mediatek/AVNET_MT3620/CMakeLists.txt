@@ -49,14 +49,14 @@ add_executable(
     ${CMAKE_CURRENT_SOURCE_DIR}/targetHAL_ConfigurationManager.cpp
 
     ${CMAKE_CURRENT_SOURCE_DIR}/main.c 
-    ${CMAKE_CURRENT_SOURCE_DIR}/mt3620-gpio.c
     
+    ${CMAKE_CURRENT_SOURCE_DIR}/target_BlockStorage.c
     ${CMAKE_CURRENT_SOURCE_DIR}/target_common.c
     
     ${TARGET_FREERTOS_COMMON_SOURCES}
     ${TARGET_FREERTOS_NANOCLR_SOURCES}
     ${TARGET_MEDIATEK_COMMON_SOURCES}
-    # ${TARGET_MEDIATEK_NANOCLR_SOURCES}
+    ${TARGET_MEDIATEK_NANOCLR_SOURCES}
     # ${NANOCLR_PROJECT_SOURCES}
 
     ${FREERTOS_SOURCES}
@@ -76,8 +76,8 @@ add_executable(
     # "${NF_Networking_SOURCES}"
     # #"${mbedTLS_SOURCES}"
 
-    # # sources for nanoFramework APIs
-    # "${TARGET_NANO_APIS_SOURCES}"
+    # sources for nanoFramework APIs
+    ${TARGET_NANO_APIS_SOURCES}
 )
 
 # add dependency from FreeRTOS (this is required to make sure the FreeRTOS repo is downloaded before the build starts)
@@ -92,7 +92,7 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${TARGET_FREERTOS_COMMON_INCLUDE_DIRS}
     ${TARGET_MEDIATEK_COMMON_INCLUDE_DIRS}
-    # ${TARGET_MEDIATEK_NANOCLR_INCLUDE_DIRS}
+    ${TARGET_MEDIATEK_NANOCLR_INCLUDE_DIRS}
 
     ${PROJECT_SOURCE_DIR}/src/CLR/Core
     ${PROJECT_SOURCE_DIR}/src/CLR/Include
@@ -119,7 +119,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${NF_Diagnostics_INCLUDE_DIRS}
     
     # includes for nanoFramework APIs
-    # ${TARGET_NANO_APIS_INCLUDES}
+    ${TARGET_NANO_APIS_INCLUDES}
 )
 
 TARGET_LINK_LIBRARIES(${PROJECT_NAME})

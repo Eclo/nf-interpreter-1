@@ -7,5 +7,4 @@ include(nf_utils)
 
 # add platform dirs
 add_subdirectory(common)
-# add_subdirectory(nanoBooter)
-# add_subdirectory(nanoCLR)
+

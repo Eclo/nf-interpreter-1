@@ -8,7 +8,7 @@
 
 #include "FreeRTOS.h"
 #include <target_board.h>
-#include "cmsis_gcc.h"
+//#include "cmsis_gcc.h"
 
 // global mutex protecting the internal state of the interpreter, including event flags
 #define GLOBAL_LOCK();      UBaseType_t uxSavedInterruptStatus = 0; \

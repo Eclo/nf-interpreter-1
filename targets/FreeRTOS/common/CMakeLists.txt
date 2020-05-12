@@ -12,11 +12,14 @@ configure_file(${CMAKE_SOURCE_DIR}/CMake/FreeRTOS_target_os.h.in
                ${CMAKE_BINARY_DIR}/targets/FreeRTOS/target_os.h @ONLY)
 
 # append common source files
-list(APPEND TARGET_FREERTOS_COMMON_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/hardfault.c)
 list(APPEND TARGET_FREERTOS_COMMON_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/platform_heap.c)
 
+if(${TARGET_SERIES} EQUAL IMXRT10xx)
+    # hard fault handler for Cortex-M7
+    list(APPEND TARGET_FREERTOS_COMMON_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/hardfault.c)
+endif()
+
 # append nanoHAL
-list(APPEND TARGET_FREERTOS_COMMON_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/targetHAL.c)
 list(APPEND TARGET_FREERTOS_COMMON_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/targetHAL_Time.cpp)
 
 list(APPEND TARGET_FREERTOS_COMMON_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/WireProtocol_ReceiverThread.c)

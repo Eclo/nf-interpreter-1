@@ -257,7 +257,6 @@ if(EXISTS ${PROJECT_SOURCE_DIR}/targets/FreeRTOS/NXP/${FREERTOS_BOARD})
     # add TARGET board directory
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/NXP/${FREERTOS_BOARD})
 
-# try to find board in the targets folder
 elseif(EXISTS ${PROJECT_SOURCE_DIR}/targets/FreeRTOS/ST/${FREERTOS_BOARD})
 
     # board found
@@ -273,6 +272,22 @@ elseif(EXISTS ${PROJECT_SOURCE_DIR}/targets/FreeRTOS/ST/${FREERTOS_BOARD})
 
     # add TARGET board directory
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/ST/${FREERTOS_BOARD})
+
+elseif(EXISTS ${PROJECT_SOURCE_DIR}/targets/FreeRTOS/TI_TM4C/${FREERTOS_BOARD})
+
+    # board found
+    message(STATUS "Support for target board '${FREERTOS_BOARD}' found")
+
+    # Define base path for the class libraries
+    set(BASE_PATH_FOR_CLASS_LIBRARIES_MODULES ${PROJECT_SOURCE_DIR}/targets/FreeRTOS/TI_TM4C/nanoCLR)
+
+    # set target base location
+    set(TARGET_BASE_LOCATION ${PROJECT_SOURCE_DIR}/targets/FreeRTOS/TI_TM4C/${FREERTOS_BOARD})
+
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/TI_TM4C)
+
+    # add TARGET board directory
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/TI_TM4C/${FREERTOS_BOARD})
 
 else()
 
@@ -309,6 +324,23 @@ else()
 
         # add TARGET board directory from Community
         add_subdirectory(${PROJECT_SOURCE_DIR}/targets-community/FreeRTOS/ST/${FREERTOS_BOARD})
+
+    # try to find TI TM4C board in the Community targets folder
+    elseif(EXISTS ${PROJECT_SOURCE_DIR}/targets-community/FreeRTOS/TI_TM4C/${FREERTOS_BOARD})
+
+        # board found
+        message(STATUS "Support for target board '${FREERTOS_BOARD}' found in Community targets")
+
+        # Define base path for the class libraries
+        set(BASE_PATH_FOR_CLASS_LIBRARIES_MODULES ${PROJECT_SOURCE_DIR}/targets/FreeRTOS/TI_TM4C/nanoCLR)
+
+        # set target base location
+        set(TARGET_BASE_LOCATION ${PROJECT_SOURCE_DIR}/targets-community/FreeRTOS/TI_TM4C/${FREERTOS_BOARD})
+
+        add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/TI_TM4C)
+
+        # add TARGET board directory from Community
+        add_subdirectory(${PROJECT_SOURCE_DIR}/targets-community/FreeRTOS/TI_TM4C/${FREERTOS_BOARD})
 
     else()
 

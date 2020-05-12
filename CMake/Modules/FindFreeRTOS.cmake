@@ -9,7 +9,7 @@
 
 # check if the series name is supported 
 
-set(FREERTOS_SUPPORTED_SERIES IMXRT10xx CACHE INTERNAL "supported series names for FreeRTOS")
+set(FREERTOS_SUPPORTED_SERIES IMXRT10xx TI_TM4C CACHE INTERNAL "supported series names for FreeRTOS")
 
 list(FIND FREERTOS_SUPPORTED_SERIES ${TARGET_SERIES} TARGET_SERIES_NAME_INDEX)
 
@@ -20,9 +20,9 @@ if(TARGET_SERIES_NAME_INDEX EQUAL -1)
 endif()
 
 # including here the CMake files for the source files specific to the target series
-include(FREERTOS_${TARGET_SERIES}_sources)
+include(FreeRTOS_${TARGET_SERIES}_sources)
 # and here the GCC options tuned for the target series 
-include(FREERTOS_${TARGET_SERIES}_GCC_options)
+include(FreeRTOS_${TARGET_SERIES}_GCC_options)
 
 # message("FreeRTOS board series is ${TARGET_SERIES}") # debug helper
 
@@ -60,4 +60,4 @@ endforeach()
 
 include(FindPackageHandleStandardArgs)
 
-FIND_PACKAGE_HANDLE_STANDARD_ARGS(FREERTOS DEFAULT_MSG FREERTOS_INCLUDE_DIRS FREERTOS_SOURCES)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(FreeRTOS DEFAULT_MSG FREERTOS_INCLUDE_DIRS FREERTOS_SOURCES)

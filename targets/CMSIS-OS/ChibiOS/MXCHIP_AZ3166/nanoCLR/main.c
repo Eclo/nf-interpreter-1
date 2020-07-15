@@ -53,6 +53,11 @@ int main(void) {
   // and performs the board-specific initializations.
   halInit();
 
+  // turn off RGB LED
+  palClearLine(LINE_RBG_GREEN);
+  palClearLine(LINE_RBG_RED);
+  palClearLine(LINE_RBG_BLUE);
+
   // init SWO as soon as possible to make it available to output ASAP
   #if (SWO_OUTPUT == TRUE)  
   SwoInit();

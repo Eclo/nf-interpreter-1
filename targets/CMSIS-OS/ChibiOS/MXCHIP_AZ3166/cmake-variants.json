@@ -36,6 +36,7 @@
           "CHIBIOS_CONTRIB_SOURCE": "",
           "STM32_CUBE_PACKAGE_REQUIRED": "OFF",
           "STM32_CUBE_PACKAGE_SOURCE": "",
+          "WICED_SDK_SOURCE": "",
           "MBEDTLS_SOURCE": "",
           "SUPPORT_ANY_BASE_CONVERSION": "OFF",
           "NF_FEATURE_DEBUGGER": "ON",

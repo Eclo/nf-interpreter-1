@@ -3,6 +3,8 @@
 # See LICENSE file in the project root for full license information.
 #
 
+include(WICED_SDK)
+
 ENABLE_LANGUAGE(ASM)
 
 # add header files with common OS definitions and board definitions specific for each image
@@ -16,10 +18,13 @@ configure_file("${CMAKE_CURRENT_SOURCE_DIR}/target_common.h.in"
 set(NANOBOOTER_PROJECT_NAME "nanoBooter")
 set(NANOCLR_PROJECT_NAME "nanoCLR")
 
+IncludeWICED_SDK()
+
 find_package(BuildUtils REQUIRED)
 find_package(CHIBIOS REQUIRED)
 find_package(ChibiOSnfOverlay REQUIRED)
 find_package(WireProtocol REQUIRED)
+find_package(WICED_SDK REQUIRED)
 
 # packages for nanoFramework libraries
 #######################################
@@ -106,6 +111,8 @@ add_executable(
     ${CHIBIOS_CONTRIB_SOURCES}
     ${ChibiOSnfOverlay_SOURCES}
 
+    ${WICED_SDK_SOURCES}
+
     ${WireProtocol_SOURCES}
 
     # sources for nanoFramework libraries
@@ -118,8 +125,8 @@ add_executable(
 )
 
 # add dependency from ChibiOS (this is required to make sure the ChibiOS repo is downloaded before the build starts)
-add_dependencies(${NANOBOOTER_PROJECT_NAME}.elf ChibiOS)
-add_dependencies(${NANOCLR_PROJECT_NAME}.elf ChibiOS)
+add_dependencies(${NANOBOOTER_PROJECT_NAME}.elf ChibiOS WICED_SDK)
+add_dependencies(${NANOCLR_PROJECT_NAME}.elf ChibiOS WICED_SDK)
 
 # include common directories
 include_directories(
@@ -157,6 +164,8 @@ target_include_directories(${NANOCLR_PROJECT_NAME}.elf PUBLIC
     ${TARGET_CMSIS_NANOCLR_INCLUDE_DIRS}
     ${TARGET_CHIBIOS_NANOCLR_INCLUDE_DIRS}
 
+    ${WICED_SDK_INCLUDE_DIRS}
+
     # directories for nanoFramework libraries
     ${NF_CoreCLR_INCLUDE_DIRS}
     ${NF_Debugger_INCLUDE_DIRS}
@@ -175,9 +184,9 @@ nf_set_compiler_options(${NANOCLR_PROJECT_NAME}.elf)
 
 # set compiler definitions
 nf_set_compiler_definitions(${NANOBOOTER_PROJECT_NAME}.elf)
-nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf)
+nf_set_compiler_definitions(${NANOCLR_PROJECT_NAME}.elf -DSTM32F412Rx -Dwifi_firmware_image=resources_firmware_DIR_43362_DIR_43362A2_bin)
 
-# set linker files
+# set linker files  
 if(CMAKE_BUILD_TYPE MATCHES Debug OR CMAKE_BUILD_TYPE MATCHES RelWithDebInfo)
     nf_set_linker_file(${NANOBOOTER_PROJECT_NAME}.elf ${CMAKE_CURRENT_SOURCE_DIR}/nanoBooter/STM32F412xG_booter-DEBUG.ld)
     nf_set_linker_file(${NANOCLR_PROJECT_NAME}.elf ${CMAKE_CURRENT_SOURCE_DIR}/nanoCLR/STM32F412xG_CLR-DEBUG.ld)

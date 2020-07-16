@@ -67,7 +67,7 @@ bool CheckValidCLRImage(uint32_t address)
     #else
     
     // "regular" address mapping
-    resetVectorAddress = (uint32_t)((uint32_t*)nanoCLRVectorTable->reset_handler);
+    resetVectorAddress = (uint32_t)*((uint32_t*)nanoCLRVectorTable->reset_handler);
     
     #endif
 

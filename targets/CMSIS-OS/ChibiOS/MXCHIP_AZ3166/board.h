@@ -41,7 +41,9 @@
 /*
  * MCU type as defined in the ST header.
  */
+#ifndef STM32F412Rx
 #define STM32F412Rx
+#endif
 
 /*
  * IO pins assignments.

@@ -14,8 +14,10 @@
 #include <ti_drivers_config.h>
 #include <ti/drivers/Power.h>
 #include <ti/drivers/pin/PINCC26XX.h>
-#include DeviceFamily_constructPath(inc / hw_prcm.h)
-#include DeviceFamily_constructPath(driverlib / sys_ctrl.h)
+// clang-format off
+#include DeviceFamily_constructPath(inc/hw_prcm.h)
+#include DeviceFamily_constructPath(driverlib/sys_ctrl.h)
+// clang-format on
 
 typedef enum __nfpack Power_PinPullUpDown
 {

@@ -71,4 +71,4 @@ void ConfigPins_I2C2();
 void ConfigPins_I2C3();
 void ConfigPins_I2C4();
 
-#endif  //_SYS_DEV_I2C_NATIVE_TARGET_H_
+#endif //_SYS_DEV_I2C_NATIVE_TARGET_H_

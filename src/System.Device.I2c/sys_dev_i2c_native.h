@@ -34,7 +34,6 @@ struct Library_sys_dev_i2c_native_System_Device_I2c_I2cConnectionSettings
     static const int FIELD___busId = 3;
 
     //--//
-
 };
 
 struct Library_sys_dev_i2c_native_System_Device_I2c_I2cTransferResult
@@ -43,7 +42,6 @@ struct Library_sys_dev_i2c_native_System_Device_I2c_I2cTransferResult
     static const int FIELD___status = 2;
 
     //--//
-
 };
 
 struct Library_sys_dev_i2c_native_System_Device_I2c_I2cDevice
@@ -58,9 +56,8 @@ struct Library_sys_dev_i2c_native_System_Device_I2c_I2cDevice
     NANOCLR_NATIVE_DECLARE(NativeTransmit___SystemDeviceI2cI2cTransferResult__SystemSpanByte__SystemSpanByte);
 
     //--//
-
 };
 
 extern const CLR_RT_NativeAssemblyData g_CLR_AssemblyNative_System_Device_I2c;
 
-#endif  //_SYS_DEV_I2C_NATIVE_H_
+#endif //_SYS_DEV_I2C_NATIVE_H_

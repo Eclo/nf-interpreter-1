@@ -12,18 +12,22 @@
 void HAL_AssertEx()
 {
     __BKPT(0);
-    while(true) { /*nop*/ }
+    while (true)
+    { /*nop*/
+    }
 }
 
 #if !defined(BUILD_RTM)
 
-void HARD_Breakpoint() 
+void HARD_Breakpoint()
 {
     __BKPT(0);
-    while(true) { /*nop*/ }
+    while (true)
+    { /*nop*/
+    }
 };
 
-#endif  // !defined(BUILD_RTM)
+#endif // !defined(BUILD_RTM)
 
 // The 'weak' implementation for NXP targets is true
 // If a target implements the store differently it has to provide a 'strong' implementation of this.

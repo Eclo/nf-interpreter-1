@@ -33,7 +33,7 @@ __nfweak bool Target_ConfigUpdateRequiresErase()
     return true;
 }
 
-    // Information on whether the target has a proprietary bootloader
+// Information on whether the target has a proprietary bootloader
 // Implemented as "weak" to allow it to be replaced with "hard" implementation at target level.
 __nfweak bool Target_HasProprietaryBooter()
 {

@@ -18,10 +18,11 @@
 // backwards compatible with .NETMF
 typedef enum Monitor_Reboot_Options
 {
-    Monitor_Reboot_c_NormalReboot = 0,
-    Monitor_Reboot_c_EnterBootloader = 1,
-    Monitor_Reboot_c_ClrRebootOnly = 2,
-    Monitor_Reboot_c_ClrStopDebugger = 4
+    Monitor_Reboot_c_NormalReboot           = 0,
+    Monitor_Reboot_c_EnterNanoBooter        = 1,
+    Monitor_Reboot_c_ClrRebootOnly          = 2,
+    Monitor_Reboot_c_ClrStopDebugger        = 4,
+    Monitor_Reboot_c_EnterProprietaryBooter = 5
 } Monitor_Reboot_Options;
 
 // structure for Access Memory operations

@@ -25,28 +25,17 @@ void HARD_Breakpoint()
 
 #endif  // !defined(BUILD_RTM)
 
-// Provides information whether the configuration block storage requires erase command before sending the update command
 // The 'weak' implementation for NXP targets is true
 // If a target implements the store differently it has to provide a 'strong' implementation of this.
-__nfweak bool Target_ConfigUpdateRequiresErase()
-{
-    return true;
-};
+__nfweak TARGET_CONFIG_UPDATE_REQUIRES_ERASE(true);
 
-bool Target_HasNanoBooter()
-{ 
-    return true; 
-};
+// NXP targets implement nanoBooter
+__nfweak TARGET_HAS_NANOBOOTER(true);
 
-// declarations of platform capabilities
-uint32_t GetPlatformCapabilities()
-{ 
-    return 0; 
-};
+// NXP targets don't declare any target capability
+__nfweak GET_TARGET_CAPABILITIES(0);
 
-// declarations of target capabilities
-// If a target has something to declare it has to provide a 'strong' implementation of this.
-__nfweak uint32_t GetTargetCapabilities()
-{ 
-    return 0; 
-};
+// NXP doesn't have a proprietatry bootloader
+inline TARGET_HAS_PROPRITARY_BOOTER(false);
+
+inline TARGET_IFU_CAPABLE(false);

@@ -5,5 +5,4 @@
 
 #include <nanoHAL.h>
 
-
 bool g_fDoNotUninitializeDebuggerPort = false;

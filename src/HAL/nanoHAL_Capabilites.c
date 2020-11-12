@@ -46,5 +46,5 @@ inline bool Target_HasNanoBooter()
     return true;
 #else
     return false;
-#endif 
+#endif
 }

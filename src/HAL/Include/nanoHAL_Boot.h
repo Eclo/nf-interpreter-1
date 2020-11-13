@@ -6,10 +6,7 @@
 #ifndef _NANOHAL_BOOT_H_
 #define _NANOHAL_BOOT_H_ 1
 
-#include <stdint.h>
-#include <string.h>
-#include <stdbool.h>
-#include <nanoWeak.h>
+#include <nanoCLR_Headers.h>
 #include <nanoPackStruct.h>
 #include <nanoVersion.h>
 #include <target_os.h>

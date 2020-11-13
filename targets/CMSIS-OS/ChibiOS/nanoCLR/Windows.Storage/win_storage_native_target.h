@@ -3,7 +3,6 @@
 // See LICENSE file in the project root for full license information.
 //
 
-
 #ifndef _WIN_STORAGE_NATIVE_TARGET_H_
 #define _WIN_STORAGE_NATIVE_TARGET_H_
 
@@ -15,6 +14,7 @@
 #include <Target_Windows_Storage.h>
 #include <nanoHAL_Windows_Storage.h>
 
-#define WORKING_DRIVE_IS_INTERNAL_DRIVE         memcmp(workingDrive, INTERNAL_DRIVE_LETTER, sizeof(INTERNAL_DRIVE_LETTER) - 1) == 0
+#define WORKING_DRIVE_IS_INTERNAL_DRIVE                                                                                \
+    memcmp(workingDrive, INTERNAL_DRIVE_LETTER, sizeof(INTERNAL_DRIVE_LETTER) - 1) == 0
 
-#endif  //_WIN_STORAGE_NATIVE_TARGET_H_
+#endif //_WIN_STORAGE_NATIVE_TARGET_H_

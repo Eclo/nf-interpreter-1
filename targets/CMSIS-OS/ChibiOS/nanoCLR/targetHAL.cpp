@@ -115,28 +115,28 @@ void nanoHAL_Initialize()
 
 #if (HAL_USE_UART == TRUE)
 
-#if NF_SERIAL_COMM_STM32_UART_USE_USART1
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_USART1
     Uart1_PAL.UartDriver = NULL;
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_USART2
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_USART2
     Uart2_PAL.UartDriver = NULL;
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_USART3
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_USART3
     Uart3_PAL.UartDriver = NULL;
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_UART4
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_UART4
     Uart4_PAL.UartDriver = NULL;
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_UART5
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_UART5
     Uart5_PAL.UartDriver = NULL;
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_USART6
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_USART6
     Uart6_PAL.UartDriver = NULL;
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_UART7
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_UART7
     Uart7_PAL.UartDriver = NULL;
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_UART8
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_UART8
     Uart8_PAL.UartDriver = NULL;
 #endif
 
@@ -235,23 +235,23 @@ void nanoHAL_Uninitialize()
 
 #if (HAL_USE_UART == TRUE)
 
-#if NF_SERIAL_COMM_STM32_UART_USE_USART1
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_USART1
     uartReleaseBus(&UARTD1);
     uartStop(&UARTD1);
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_USART2
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_USART2
     uartReleaseBus(&UARTD2);
     uartStop(&UARTD2);
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_USART3
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_USART3
     uartReleaseBus(&UARTD3);
     uartStop(&UARTD3);
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_UART4
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_UART4
     uartReleaseBus(&UARTD4);
     uartStop(&UARTD4);
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_UART5
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_UART5
     uartReleaseBus(&UARTD5);
     uartStop(&UARTD5);
 #endif
@@ -259,11 +259,11 @@ void nanoHAL_Uninitialize()
     uartReleaseBus(&UARTD6);
     uartStop(&UARTD6);
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_UART7
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_UART7
     uartReleaseBus(&UARTD7);
     uartStop(&UARTD7);
 #endif
-#if NF_SERIAL_COMM_STM32_UART_USE_UART8
+#ifdef NF_SERIAL_COMM_STM32_UART_USE_UART8
     uartReleaseBus(&UARTD8);
     uartStop(&UARTD8);
 #endif

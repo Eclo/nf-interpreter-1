@@ -748,12 +748,6 @@ elseif(RTOS_FREERTOS_ESP32_CHECK)
     if(${TARGET_SERIES} STREQUAL "ESP32")
         message(STATUS "Platform ESP32 target board: ${TARGET_BOARD}")
 
-        if(API_nanoFramework.Hardware.Esp32.Rmt)
-            set(HAL_USE_ESP32_RMT_OPTION TRUE CACHE INTERNAL "HAL RMT for nanoFramework.Hardware.Esp32.Rmt")
-        else()
-            set(HAL_USE_ESP32_RMT_OPTION FALSE CACHE INTERNAL "HAL RMT for nanoFramework.Hardware.Esp32.Rmt")
-        endif()
-
         # check watchdog feature
         # EPS32 build has watchdog enabled by default, so setting it to OFF doesn't make sense 
         # becuase the build system can't honour that preference

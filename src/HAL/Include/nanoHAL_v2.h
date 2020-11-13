@@ -312,7 +312,7 @@ extern "C"
 #define _SIDE_ASSERTE(expr) (expr)
 #endif
 
-#if STATIC_ASSERT_SUPPORTED
+#ifdef STATIC_ASSERT_SUPPORTED
 #define CT_ASSERT_STRING(x) #x
 #define CT_ASSERT_UNIQUE_NAME(e, name)                                                                                 \
     static_assert((e), CT_ASSERT_STRING(name) "@" __FILE__ CT_ASSERT_STRING(__LINE__));

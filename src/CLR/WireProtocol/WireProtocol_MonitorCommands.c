@@ -137,29 +137,29 @@ __nfweak int nanoBooter_GetTargetInfo(TargetInfo *targetInfo)
 {
 #if (TARGET_HAS_NANOBOOTER == TRUE)
 
-   BootClipboard *data = &g_BootClipboard;
+    BootClipboard *data = &g_BootClipboard;
 
-   targetInfo->BooterVersion.usMajor = data->BooterVersion.usMajor;
-   targetInfo->BooterVersion.usMinor = data->BooterVersion.usMinor;
-   targetInfo->BooterVersion.usBuild = data->BooterVersion.usBuild;
-   targetInfo->BooterVersion.usRevision = data->BooterVersion.usRevision;
+    targetInfo->BooterVersion.usMajor = data->BooterVersion.usMajor;
+    targetInfo->BooterVersion.usMinor = data->BooterVersion.usMinor;
+    targetInfo->BooterVersion.usBuild = data->BooterVersion.usBuild;
+    targetInfo->BooterVersion.usRevision = data->BooterVersion.usRevision;
 
-   targetInfo->ClrVersion.usMajor = data->CLRVersion.usMajor;
-   targetInfo->ClrVersion.usMinor = data->CLRVersion.usMinor;
-   targetInfo->ClrVersion.usBuild = data->CLRVersion.usBuild;
-   targetInfo->ClrVersion.usRevision = data->CLRVersion.usRevision;
+    targetInfo->ClrVersion.usMajor = data->CLRVersion.usMajor;
+    targetInfo->ClrVersion.usMinor = data->CLRVersion.usMinor;
+    targetInfo->ClrVersion.usBuild = data->CLRVersion.usBuild;
+    targetInfo->ClrVersion.usRevision = data->CLRVersion.usRevision;
 
 #else
 
-   targetInfo->BooterVersion.usMajor = 0;
-   targetInfo->BooterVersion.usMinor = 0;
-   targetInfo->BooterVersion.usBuild = 0;
-   targetInfo->BooterVersion.usRevision = 0;
+    targetInfo->BooterVersion.usMajor = 0;
+    targetInfo->BooterVersion.usMinor = 0;
+    targetInfo->BooterVersion.usBuild = 0;
+    targetInfo->BooterVersion.usRevision = 0;
 
-   targetInfo->ClrVersion.usMajor = VERSION_MAJOR;
-   targetInfo->ClrVersion.usMinor = VERSION_MINOR;
-   targetInfo->ClrVersion.usBuild = VERSION_BUILD;
-   targetInfo->ClrVersion.usRevision = VERSION_REVISION;
+    targetInfo->ClrVersion.usMajor = VERSION_MAJOR;
+    targetInfo->ClrVersion.usMinor = VERSION_MINOR;
+    targetInfo->ClrVersion.usBuild = VERSION_BUILD;
+    targetInfo->ClrVersion.usRevision = VERSION_REVISION;
 
 #endif
 

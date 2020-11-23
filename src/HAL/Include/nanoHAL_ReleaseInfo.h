@@ -40,18 +40,17 @@ struct __nfpack NFReleaseInfo
     unsigned char PlatformName[32];
 
     static void Init(
-        NFReleaseInfo& releaseInfo, 
-        unsigned short major=0, 
-        unsigned short minor=0, 
-        unsigned short build=0, 
-        unsigned short revision=0, 
-        const char *info=(const char *)NULL, 
-        size_t infoLen=0,
-        const char *target=(const char *)NULL, 
-        size_t targetLen=0,
-        const char *platform=(const char *)NULL, 
-        size_t platformLen=0
-        );
+        NFReleaseInfo &releaseInfo,
+        unsigned short major = 0,
+        unsigned short minor = 0,
+        unsigned short build = 0,
+        unsigned short revision = 0,
+        const char *info = (const char *)NULL,
+        size_t infoLen = 0,
+        const char *target = (const char *)NULL,
+        size_t targetLen = 0,
+        const char *platform = (const char *)NULL,
+        size_t platformLen = 0);
 };
 
 struct __nfpack OEM_MODEL_SKU

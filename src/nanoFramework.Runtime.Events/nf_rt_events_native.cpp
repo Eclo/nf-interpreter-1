@@ -38,8 +38,6 @@ static const CLR_RT_MethodHandler method_lookup[] =
     NULL,
     NULL,
     NULL,
-    NULL,
-    NULL,
     Library_nf_rt_events_native_nanoFramework_Runtime_Events_EventSink::EventConfig___VOID,
     NULL,
     NULL,
@@ -71,5 +69,5 @@ const CLR_RT_NativeAssemblyData g_CLR_AssemblyNative_nanoFramework_Runtime_Event
     "nanoFramework.Runtime.Events",
     0x0EAB00C9,
     method_lookup,
-    { 100, 0, 7, 1 }
+    { 100, 0, 8, 0 }
 };

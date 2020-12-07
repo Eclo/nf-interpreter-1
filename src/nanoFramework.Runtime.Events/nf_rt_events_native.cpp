@@ -4,12 +4,9 @@
 // See LICENSE file in the project root for full license information.
 //
 
-
 #include "nf_rt_events_native.h"
 
-
-static const CLR_RT_MethodHandler method_lookup[] =
-{
+static const CLR_RT_MethodHandler method_lookup[] = {
     NULL,
     NULL,
     NULL,
@@ -60,14 +57,11 @@ static const CLR_RT_MethodHandler method_lookup[] =
     NULL,
     NULL,
     NULL,
-    Library_nf_rt_events_native_nanoFramework_Runtime_Events_WeakDelegate::Combine___STATIC__SystemDelegate__SystemDelegate__SystemDelegate,
-    Library_nf_rt_events_native_nanoFramework_Runtime_Events_WeakDelegate::Remove___STATIC__SystemDelegate__SystemDelegate__SystemDelegate,
+    Library_nf_rt_events_native_nanoFramework_Runtime_Events_WeakDelegate::
+        Combine___STATIC__SystemDelegate__SystemDelegate__SystemDelegate,
+    Library_nf_rt_events_native_nanoFramework_Runtime_Events_WeakDelegate::
+        Remove___STATIC__SystemDelegate__SystemDelegate__SystemDelegate,
 };
 
 const CLR_RT_NativeAssemblyData g_CLR_AssemblyNative_nanoFramework_Runtime_Events =
-{
-    "nanoFramework.Runtime.Events",
-    0x0EAB00C9,
-    method_lookup,
-    { 100, 0, 8, 0 }
-};
+    {"nanoFramework.Runtime.Events", 0x0EAB00C9, method_lookup, {100, 0, 8, 0}};

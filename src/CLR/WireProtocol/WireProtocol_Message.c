@@ -26,6 +26,10 @@ static uint8_t *buf = (uint8_t *)&(_inboundMessage.m_header);
 volatile uint8_t _rxStatePrev;
 #endif
 
+#ifdef DEBUG
+volatile uint8_t _rxStatePrev;
+#endif
+
 // timeout to receive WP payload before bailing out
 // 5 secs (100 nsecs units)
 static const uint64_t c_PayloadTimeout = 5 * TIME_CONVERSION__TO_SYSTICKS;
@@ -264,6 +268,8 @@ void WP_Message_Process()
                     return;
                 }
 
+                ASSERT(_size <= sizeof(_inboundMessage.m_header));
+
                 // Synch to the start of a message by looking for a valid MARKER
                 while (true)
                 {
@@ -273,6 +279,8 @@ void WP_Message_Process()
                     {
                         break;
                     }
+
+                    ASSERT(len <= sizeof(_inboundMessage.m_header));
 
                     size_t lenCmp = min(len, sizeof(_inboundMessage.m_header.m_signature));
 

@@ -268,8 +268,6 @@ void WP_Message_Process()
                     return;
                 }
 
-                ASSERT(_size <= sizeof(_inboundMessage.m_header));
-
                 // Synch to the start of a message by looking for a valid MARKER
                 while (true)
                 {
@@ -279,8 +277,6 @@ void WP_Message_Process()
                     {
                         break;
                     }
-
-                    ASSERT(len <= sizeof(_inboundMessage.m_header));
 
                     size_t lenCmp = min(len, sizeof(_inboundMessage.m_header.m_signature));
 
